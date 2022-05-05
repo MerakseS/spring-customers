@@ -13,6 +13,11 @@
     <p th:text="*{firstName}">Имя</p>
     <h3>Фамилия</h3>
     <p th:text="*{surname}">Фамилия</p>
+
+    <a href="editCustomer.html" th:href="@{/customer/{id}/edit(id=*{id})}">
+        <button>Изменить клиента</button>
+    </a>
 </div>
+
 </body>
 </html>

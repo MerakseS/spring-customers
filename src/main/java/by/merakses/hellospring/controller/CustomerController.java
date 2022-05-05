@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import by.merakses.hellospring.entity.Customer;
@@ -52,5 +53,18 @@ public class CustomerController {
         Customer customer = customerService.get(id);
         model.addAttribute("customer", customer);
         return CUSTOMER_PAGE_NAME;
+    }
+
+    @GetMapping("/{id}/edit")
+    public String showEditCustomerForm(@PathVariable("id") long id, Model model) {
+        Customer customer = customerService.get(id);
+        model.addAttribute("customer", customer);
+        return EDIT_CUSTOMER_PAGE_NAME;
+    }
+
+    @PutMapping("/{id}")
+    public String updateCustomer(@PathVariable("id") long id, @ModelAttribute("customer") Customer customer) {
+        customerService.update(id, customer);
+        return CUSTOMER_LIST_REDIRECT;
     }
 }

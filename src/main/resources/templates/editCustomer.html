@@ -2,18 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Добавить клиента</title>
+    <title>Изменить клиента</title>
 </head>
 <body>
-<h1>Добавить клиента</h1>
-<form th:object="${customer}" th:method="POST" th:action="@{/customer}">
+<h1>Изменить клиента</h1>
+<form th:object="${customer}" th:method="PUT" th:action="@{/customer/{id}(id=*{id})}">
     <label for="firstName">Имя: </label>
     <input id="firstName" type="text" th:field="*{firstName}"/>
     <br/>
     <label for="surname">Фамилия: </label>
     <input id="surname" type="text" th:field="*{surname}"/>
     <br/>
-    <input type="submit" value="Добавить клиента"/>
+    <input type="submit" value="Изменить клиента"/>
 </form>
 </body>
 </html>
