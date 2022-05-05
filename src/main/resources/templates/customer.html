@@ -17,6 +17,10 @@
     <a href="editCustomer.html" th:href="@{/customer/{id}/edit(id=*{id})}">
         <button>Изменить клиента</button>
     </a>
+
+    <form th:method="DELETE" th:action="@{/customer/{id}(id=*{id})}">
+        <input type="submit" value="Удалить клиента"/>
+    </form>
 </div>
 
 </body>
