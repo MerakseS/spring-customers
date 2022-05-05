@@ -5,8 +5,13 @@
     <title>Клиенты</title>
 </head>
 <body>
+<h1>Список клиентов</h1>
 <div th:each="customer : ${customers}">
-    <p th:text="${customer.firstName} + ' ' + ${customer.surname}">Name Surname</p>
+    <p th:object="${customer}" th:text="|*{id}. *{firstName} *{surname}|">1. Name Surname</p>
 </div>
+
+<a href="newCustomer.html" th:href="@{/customer/new}">
+    <button>Добавить клиента</button>
+</a>
 </body>
 </html>
