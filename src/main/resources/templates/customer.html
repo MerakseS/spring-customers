@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Клиент</title>
+</head>
+<body>
+<h1>Клиент</h1>
+<div th:object="${customer}">
+    <h3>Идентификатор</h3>
+    <p th:text="*{id}">1</p>
+    <h3>Имя</h3>
+    <p th:text="*{firstName}">Имя</p>
+    <h3>Фамилия</h3>
+    <p th:text="*{surname}">Фамилия</p>
+</div>
+</body>
+</html>
