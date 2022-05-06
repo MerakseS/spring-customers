@@ -30,6 +30,7 @@ public class CustomerController {
     private static final String CUSTOMER_PAGE_NAME = "customer";
     private static final String EDIT_CUSTOMER_PAGE_NAME = "editCustomer";
     private static final String CUSTOMER_LIST_REDIRECT = "redirect:/customer";
+    private static final String CUSTOMER_REDIRECT = "redirect:/customer/%d";
 
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
@@ -71,7 +72,7 @@ public class CustomerController {
     public String updateCustomer(@PathVariable(ID_PATH_VARIABLE_NAME) long id,
         @ModelAttribute(CUSTOMER_ATTRIBUTE_NAME) Customer customer) {
         customerService.update(id, customer);
-        return CUSTOMER_LIST_REDIRECT;
+        return String.format(CUSTOMER_REDIRECT, id);
     }
 
     @DeleteMapping("/{id}")

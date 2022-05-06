@@ -9,10 +9,20 @@
 <form th:object="${customer}" th:method="PUT" th:action="@{/customer/{id}(id=*{id})}">
     <label for="firstName">Имя: </label>
     <input id="firstName" type="text" th:field="*{firstName}"/>
-    <br/>
+    <br/><br/>
+
     <label for="surname">Фамилия: </label>
     <input id="surname" type="text" th:field="*{surname}"/>
-    <br/>
+    <br/><br/>
+
+    <label for="birthdate">Дата рождения: </label>
+    <input id="birthdate" type="date" th:field="*{birthdate}"/>
+    <br/><br/>
+
+    <label for="height">Рост: </label>
+    <input id="height" type="text" th:field="*{height}"/>
+    <br/><br/>
+
     <input type="submit" value="Изменить клиента"/>
 </form>
 </body>

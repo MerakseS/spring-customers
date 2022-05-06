@@ -5,18 +5,14 @@
     <title>Клиент</title>
 </head>
 <body>
-<h1>Клиент</h1>
 <div th:object="${customer}">
-    <h3>Идентификатор</h3>
-    <p th:text="*{id}">1</p>
-    <h3>Имя</h3>
-    <p th:text="*{firstName}">Имя</p>
-    <h3>Фамилия</h3>
-    <p th:text="*{surname}">Фамилия</p>
+    <h2 th:text="|*{firstName} *{surname}|">Имя Фамилия</h2>
+    <p id="birthdate" th:text="|Дата рождения: *{birthdate}|"></p>
+    <p id="height" th:text="|Рост: *{height}|"></p>
 
     <a href="editCustomer.html" th:href="@{/customer/{id}/edit(id=*{id})}">
         <button>Изменить клиента</button>
-    </a>
+    </a> <br/><br/>
 
     <form th:method="DELETE" th:action="@{/customer/{id}(id=*{id})}">
         <input type="submit" value="Удалить клиента"/>
