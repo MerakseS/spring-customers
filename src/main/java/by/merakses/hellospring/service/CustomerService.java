@@ -35,12 +35,14 @@ public class CustomerService {
     }
 
     public Customer get(long id) {
-        LOG.info(format("Getting customer with id %d", id));
-        return customerRepository.getById(id);
+        Customer customer = customerRepository.findById(id).orElseThrow();
+        LOG.info(format("Successfully got customer with id %d", id));
+        return customer;
     }
 
     @Transactional
     public void update(long id, Customer customer) {
+        customerRepository.findById(id).orElseThrow();
         customer.setId(id);
         customerRepository.save(customer);
         LOG.info(format("Successfully updated customer with id %d", customer.getId()));
@@ -48,7 +50,8 @@ public class CustomerService {
 
     @Transactional
     public void delete(long id) {
-        customerRepository.deleteById(id);
+        Customer customer = customerRepository.findById(id).orElseThrow();
+        customerRepository.delete(customer);
         LOG.info(format("Successfully deleted customer with id %d", id));
     }
 }

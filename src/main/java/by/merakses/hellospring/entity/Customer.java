@@ -8,8 +8,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import by.merakses.hellospring.validation.Adult;
 
 @Entity
 @Table(name = "customer")
@@ -20,16 +27,25 @@ public class Customer {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @NotBlank(message = "Имя должно быть заполнено.")
+    @NotNull(message = "Имя должно быть заполнено.")
+    @Length(message = "Длина имени должна быть от 2 до 30 символов.", min = 2, max = 30)
     @Column(name = "first_name", nullable = false, length = 30)
     private String firstName;
 
+    @NotBlank(message = "Фамилия должна быть заполнена.")
+    @NotNull(message = "Фамилия должна быть заполнена.")
+    @Length(message = "Длина фамилии должна быть от 2 до 30 символов.", min = 2, max = 30)
     @Column(name = "surname", nullable = false, length = 30)
     private String surname;
 
-    @Column(name = "birthdate", nullable = false)
+    @NotNull(message = "Дата рождения должна быть заполнена.")
+    @Adult(message = "Клиент должен быть совершеннолетним.")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @Column(name = "birthdate", nullable = false)
     private LocalDate birthdate;
 
+    @Positive(message = "Рост должен быть больше нуля.")
     @Column(name = "height")
     private Integer height;
 

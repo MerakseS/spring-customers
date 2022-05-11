@@ -9,19 +9,31 @@
 <form th:object="${customer}" th:method="PUT" th:action="@{/customer/{id}(id=*{id})}">
     <label for="firstName">Имя: </label>
     <input id="firstName" type="text" th:field="*{firstName}"/>
-    <br/><br/>
+    <p style="color: red; font-size: small" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First name error</p>
+    <div th:unless="${#fields.hasErrors('firstName')}">
+        <br/><br/>
+    </div>
 
     <label for="surname">Фамилия: </label>
     <input id="surname" type="text" th:field="*{surname}"/>
-    <br/><br/>
+    <p style="color: red; font-size: small" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname error</p>
+    <div th:unless="${#fields.hasErrors('surname')}">
+        <br/><br/>
+    </div>
 
     <label for="birthdate">Дата рождения: </label>
     <input id="birthdate" type="date" th:field="*{birthdate}"/>
-    <br/><br/>
+    <p style="color: red; font-size: small" th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}">Birthdate error</p>
+    <div th:unless="${#fields.hasErrors('birthdate')}">
+        <br/><br/>
+    </div>
 
     <label for="height">Рост: </label>
     <input id="height" type="text" th:field="*{height}"/>
-    <br/><br/>
+    <p style="color: red; font-size: small" th:if="${#fields.hasErrors('height')}" th:errors="*{height}">Height error</p>
+    <div th:unless="${#fields.hasErrors('height')}">
+        <br/><br/>
+    </div>
 
     <input type="submit" value="Изменить клиента"/>
 </form>
