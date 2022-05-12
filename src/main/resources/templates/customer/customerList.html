@@ -5,15 +5,22 @@
     <title>Клиенты</title>
 </head>
 <body>
-<h1>Список клиентов</h1>
-<div th:each="customer : ${customers}" th:object="${customer}">
-    <a href="customer.html"
-       th:href="@{/customer/{id}(id=*{id})}"
-       th:text="|*{firstName} *{surname}|">Name Surname</a>
+
+<div th:replace="fragments/header::header('Список клиентов')">
 </div>
+
+<div th:each="customer : ${customers}" th:object="${customer}">
+    <p>
+        <a href="customer.html" th:href="@{/customer/{id}(id=*{id})}" th:text="|*{firstName} *{surname}|">Name Surname</a>
+    </p>
+</div>
+<br/>
 
 <a href="newCustomer.html" th:href="@{/customer/new}">
     <button>Добавить клиента</button>
 </a>
+
+<div th:replace="fragments/footer :: footer"></div>
+
 </body>
 </html>

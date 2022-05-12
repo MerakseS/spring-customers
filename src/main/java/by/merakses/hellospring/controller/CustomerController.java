@@ -36,10 +36,10 @@ public class CustomerController {
     private static final String CUSTOMER_ATTRIBUTE_NAME = "customer";
     private static final String ERROR_ATTRIBUTE_NAME = "errorMessage";
 
-    private static final String CUSTOMER_LIST_PAGE_NAME = "customerList";
-    private static final String NEW_CUSTOMER_PAGE_NAME = "newCustomer";
-    private static final String CUSTOMER_PAGE_NAME = "customer";
-    private static final String EDIT_CUSTOMER_PAGE_NAME = "editCustomer";
+    private static final String CUSTOMER_LIST_PAGE_NAME = "customer/customerList";
+    private static final String NEW_CUSTOMER_PAGE_NAME = "customer/newCustomer";
+    private static final String CUSTOMER_PAGE_NAME = "customer/customer";
+    private static final String EDIT_CUSTOMER_PAGE_NAME = "customer/editCustomer";
     private static final String NOT_FOUND_PAGE_NAME = "pageNotFound";
 
     private static final String CUSTOMER_LIST_REDIRECT = "redirect:/customer";
@@ -82,9 +82,7 @@ public class CustomerController {
             return CUSTOMER_PAGE_NAME;
         }
         catch (NoSuchElementException e) {
-            LOG.warn(format("Can't show customer with id %d", id), e);
-            model.addAttribute(ERROR_ATTRIBUTE_NAME, format("Клиента с id %d не существует :(", id));
-            return NOT_FOUND_PAGE_NAME;
+            return handleNoSuchElementException("Can't show customer with id %d", id, e, model);
         }
     }
 
@@ -96,9 +94,7 @@ public class CustomerController {
             return EDIT_CUSTOMER_PAGE_NAME;
         }
         catch (NoSuchElementException e) {
-            LOG.warn(format("Can't show edit form of customer with id %d", id), e);
-            model.addAttribute(ERROR_ATTRIBUTE_NAME, format("Клиента с id %d не существует :(", id));
-            return NOT_FOUND_PAGE_NAME;
+            return handleNoSuchElementException("Can't show edit form of customer with id %d", id, e, model);
         }
     }
 
@@ -118,9 +114,7 @@ public class CustomerController {
             return format(CUSTOMER_REDIRECT, id);
         }
         catch (NoSuchElementException e) {
-            LOG.warn(format("Can't update customer with id %d", id), e);
-            model.addAttribute(ERROR_ATTRIBUTE_NAME, format("Клиента с id %d не существует :(", id));
-            return NOT_FOUND_PAGE_NAME;
+            return handleNoSuchElementException("Can't update customer with id %d", id, e, model);
         }
     }
 
@@ -131,9 +125,14 @@ public class CustomerController {
             return CUSTOMER_LIST_REDIRECT;
         }
         catch (NoSuchElementException e) {
-            LOG.warn(format("Can't delete customer with id %d", id), e);
-            model.addAttribute(ERROR_ATTRIBUTE_NAME, format("Клиента с id %d не существует :(", id));
-            return NOT_FOUND_PAGE_NAME;
+            return handleNoSuchElementException("Can't delete customer with id %d", id, e, model);
         }
     }
+
+    private String handleNoSuchElementException(String logMessage, long id, NoSuchElementException e, Model model) {
+        LOG.warn(format(logMessage, id), e);
+        model.addAttribute(ERROR_ATTRIBUTE_NAME, format("Клиента с id %d не существует :(", id));
+        return NOT_FOUND_PAGE_NAME;
+    }
+
 }
