@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header::header('Список клиентов')">
     <meta charset="UTF-8">
     <title>Клиенты</title>
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 
-<div th:replace="fragments/header::header('Список клиентов')">
-</div>
+<div th:replace="fragments/navbar::navbar('Список клиентов')"></div>
 
-<div th:each="customer : ${customers}" th:object="${customer}">
-    <p>
-        <a href="customer.html" th:href="@{/customer/{id}(id=*{id})}" th:text="|*{firstName} *{surname}|">Name Surname</a>
-    </p>
-</div>
-<br/>
+<main class="flex-shrink-0">
+    <div class="container">
+        <div class="d-grid gap-2">
+            <a th:each="customer : ${customers}" th:object="${customer}"
+               class="btn btn-outline-secondary" href="customer.html"
+               th:href="@{/customer/{id}(id=*{id})}"
+               th:text="|*{firstName} *{surname}|">
+                Name Surname
+            </a>
+        </div>
 
-<a href="newCustomer.html" th:href="@{/customer/new}">
-    <button>Добавить клиента</button>
-</a>
+        <br/>
+        <a class="btn btn-primary btn-lg" href="newCustomer.html" th:href="@{/customer/new}">Добавить клиента</a>
+    </div>
+</main>
 
-<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="fragments/footer::footer"></div>
 
 </body>
 </html>

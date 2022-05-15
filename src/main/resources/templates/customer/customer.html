@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header::header('Клиент')">
     <meta charset="UTF-8">
     <title>Клиент</title>
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 
-<div th:replace="fragments/header :: header('Клиент')"></div>
+<div th:replace="fragments/navbar::navbar('Клиент')"></div>
 
-<div th:object="${customer}">
-    <h2 th:text="|*{firstName} *{surname}|">Имя Фамилия</h2>
-    <p id="birthdate" th:text="|Дата рождения: *{birthdate}|"></p>
-    <p id="height" th:text="|Рост: *{height} см|"></p>
+<main class="flex-shrink-0">
+    <div class="container">
+        <div th:object="${customer}">
+            <a class="text-black" href="customerList.html" th:href="@{/customer}"><i class="bi bi-chevron-left"></i></a>
+            <h2 th:text="|*{firstName} *{surname}|">Имя Фамилия</h2>
+            <p th:text="|Дата рождения: *{birthdate}|"></p>
+            <p th:text="|Рост: *{height} см|"></p>
 
-    <a href="editCustomer.html" th:href="@{/customer/{id}/edit(id=*{id})}">
-        <button>Изменить клиента</button>
-    </a> <br/><br/>
-
-    <form th:method="DELETE" th:action="@{/customer/{id}(id=*{id})}">
-        <input type="submit" value="Удалить клиента"/>
-    </form>
-</div>
+            <form class="form" th:method="DELETE" th:action="@{/customer/{id}(id=*{id})}">
+                <a class="btn btn-primary" href="editCustomer.html" th:href="@{/customer/{id}/edit(id=*{id})}">
+                    Изменить
+                </a>
+                <input type="submit" class="btn btn-secondary" value="Удалить"/>
+            </form>
+        </div>
+    </div>
+</main>
 
 <div th:replace="fragments/footer::footer"></div>
 

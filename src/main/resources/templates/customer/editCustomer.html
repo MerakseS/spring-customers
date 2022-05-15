@@ -1,44 +1,61 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header::header('Редактирование клиента')">
     <meta charset="UTF-8">
     <title>Редактирование клиента</title>
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 
-<div th:replace="fragments/header :: header('Редактирование клиента')"></div>
+<div th:replace="fragments/navbar::navbar('Редактирование клиента')"></div>
 
-<form th:object="${customer}" th:method="PUT" th:action="@{/customer/{id}(id=*{id})}">
-    <label for="firstName">Имя: </label>
-    <input id="firstName" type="text" th:field="*{firstName}"/>
-    <p style="color: red; font-size: small" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First name error</p>
-    <div th:unless="${#fields.hasErrors('firstName')}">
-        <br/><br/>
+<main class="flex-shrink-0">
+    <div class="container">
+        <h3 class="mb-3">Редактирование клиента</h3>
+        <form th:object="${customer}" th:method="PUT" th:action="@{/customer/{id}(id=*{id})}">
+            <div class="row g-3">
+                <div class="col-md-6 has-validation">
+                    <label for="firstName" class="form-label">Имя</label>
+                    <input id="firstName" type="text" th:field="*{firstName}"
+                           th:class="|form-control ${#fields.hasErrors('firstName') ? 'is-invalid' : ''}|">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+                        Valid first name is required.
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="surname" class="form-label">Фамилия</label>
+                    <input type="text" id="surname" th:field="*{surname}"
+                           th:class="|form-control ${#fields.hasErrors('surname') ? 'is-invalid' : ''}|">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">
+                        Valid surname is required.
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="birthdate" class="form-label">Дата рождения</label>
+                    <input type="date" id="birthdate" th:field="*{birthdate}"
+                           th:class="|form-control ${#fields.hasErrors('birthdate') ? 'is-invalid' : ''}|">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}">
+                        Please enter a valid date.
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="height" class="form-label">Рост <span class="text-muted">(Опционально)</span></label>
+                    <input id="height" type="text" th:field="*{height}"
+                           th:class="|form-control ${#fields.hasErrors('height') ? 'is-invalid' : ''}|">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('height')}" th:errors="*{height}">
+                        Please enter your height.
+                    </div>
+                </div>
+            </div>
+
+            <br/>
+            <button class="btn btn-primary btn-lg" type="submit">Изменить клиента</button>
+            <a class="btn btn-secondary btn-lg" href="customer.html" th:href="@{/customer/{id}(id=*{id})}">Отмена</a>
+        </form>
     </div>
-
-    <label for="surname">Фамилия: </label>
-    <input id="surname" type="text" th:field="*{surname}"/>
-    <p style="color: red; font-size: small" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname error</p>
-    <div th:unless="${#fields.hasErrors('surname')}">
-        <br/><br/>
-    </div>
-
-    <label for="birthdate">Дата рождения: </label>
-    <input id="birthdate" type="date" th:field="*{birthdate}"/>
-    <p style="color: red; font-size: small" th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}">Birthdate error</p>
-    <div th:unless="${#fields.hasErrors('birthdate')}">
-        <br/><br/>
-    </div>
-
-    <label for="height">Рост: </label>
-    <input id="height" type="text" th:field="*{height}"/>
-    <p style="color: red; font-size: small" th:if="${#fields.hasErrors('height')}" th:errors="*{height}">Height error</p>
-    <div th:unless="${#fields.hasErrors('height')}">
-        <br/><br/>
-    </div>
-
-    <input type="submit" value="Изменить клиента"/>
-</form>
+</main>
 
 <div th:replace="fragments/footer::footer"></div>
 

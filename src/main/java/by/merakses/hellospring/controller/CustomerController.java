@@ -129,8 +129,8 @@ public class CustomerController {
         }
     }
 
-    private String handleNoSuchElementException(String logMessage, long id, NoSuchElementException e, Model model) {
-        LOG.warn(format(logMessage, id), e);
+    private String handleNoSuchElementException(String logMessage, long id, NoSuchElementException exception, Model model) {
+        LOG.warn(format(logMessage, id), exception);
         model.addAttribute(ERROR_ATTRIBUTE_NAME, format("Клиента с id %d не существует :(", id));
         return NOT_FOUND_PAGE_NAME;
     }

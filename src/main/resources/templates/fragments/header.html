@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head th:fragment="header(title)">
+    <!-- Кодировка веб-страницы -->
+    <meta charset="utf-8">
+
+    <!-- Настройка viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+    <!-- Bootstrap JS + Popper JS -->
+    <script defer src="../../static/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+    <title th:text="${title}">Title</title>
 </head>
 <body>
-<header th:fragment="header(title)">
-    <a href="../customer/customer.html" th:href="@{/customer}">На главную</a>
-    <h1 th:text="${title}">Title</h1>
-</header>
+
 </body>
 </html>
