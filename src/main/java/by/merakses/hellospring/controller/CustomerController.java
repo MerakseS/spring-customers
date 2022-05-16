@@ -28,10 +28,7 @@ public class CustomerController {
 
     private static final Logger LOG = LoggerFactory.getLogger(CustomerController.class);
 
-    private final CustomerService customerService;
-
     private static final String ID_PATH_VARIABLE_NAME = "id";
-
     private static final String CUSTOMER_LIST_ATTRIBUTE_NAME = "customers";
     private static final String CUSTOMER_ATTRIBUTE_NAME = "customer";
     private static final String ERROR_ATTRIBUTE_NAME = "errorMessage";
@@ -44,6 +41,8 @@ public class CustomerController {
 
     private static final String CUSTOMER_LIST_REDIRECT = "redirect:/customer";
     private static final String CUSTOMER_REDIRECT = "redirect:/customer/%d";
+
+    private final CustomerService customerService;
 
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
