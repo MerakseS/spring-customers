@@ -1,10 +1,10 @@
-package by.merakses.hellospring;
+package by.merakses.springcustomers;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HelloSpringApplicationTests {
+class SpringCustomersApplicationTests {
 
     @Test
     void contextLoads() {

@@ -1,4 +1,4 @@
-package by.merakses.hellospring.service;
+package by.merakses.springcustomers.service;
 
 import java.util.List;
 import static java.lang.String.format;
@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import by.merakses.hellospring.entity.Customer;
-import by.merakses.hellospring.repository.CustomerRepository;
+import by.merakses.springcustomers.entity.Customer;
+import by.merakses.springcustomers.repository.CustomerRepository;
 
 @Service
 @Transactional(readOnly = true)

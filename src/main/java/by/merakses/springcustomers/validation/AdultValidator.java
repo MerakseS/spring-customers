@@ -1,4 +1,4 @@
-package by.merakses.hellospring.validation;
+package by.merakses.springcustomers.validation;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package by.merakses.hellospring.controller;
+package by.merakses.springcustomers.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

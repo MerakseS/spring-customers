@@ -1,13 +1,13 @@
-package by.merakses.hellospring;
+package by.merakses.springcustomers;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HelloSpringApplication {
+public class SpringCustomersApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HelloSpringApplication.class, args);
+        SpringApplication.run(SpringCustomersApplication.class, args);
     }
 
 }

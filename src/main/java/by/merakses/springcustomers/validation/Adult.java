@@ -1,4 +1,4 @@
-package by.merakses.hellospring.validation;
+package by.merakses.springcustomers.validation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

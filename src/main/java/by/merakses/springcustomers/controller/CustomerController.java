@@ -1,4 +1,4 @@
-package by.merakses.hellospring.controller;
+package by.merakses.springcustomers.controller;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import by.merakses.hellospring.entity.Customer;
-import by.merakses.hellospring.service.CustomerService;
+import by.merakses.springcustomers.entity.Customer;
+import by.merakses.springcustomers.service.CustomerService;
 
 @Controller
 @RequestMapping("/customer")

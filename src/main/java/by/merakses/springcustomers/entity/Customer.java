@@ -1,4 +1,4 @@
-package by.merakses.hellospring.entity;
+package by.merakses.springcustomers.entity;
 
 import java.time.LocalDate;
 
@@ -15,7 +15,7 @@ import javax.validation.constraints.Positive;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import by.merakses.hellospring.validation.Adult;
+import by.merakses.springcustomers.validation.Adult;
 
 @Entity
 @Table(name = "customer")
